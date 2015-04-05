@@ -18,7 +18,7 @@ public class AnalizadorLex {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String path = "C:/Users/Dany/Documents/NetBeansProjects/AnalizadorLex/src/analizadorlex/parametros.flex";
+        String path = "src/analizadorlex/parametros.flex";
         generarLexer(path);
 
     }

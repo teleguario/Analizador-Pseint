@@ -10,7 +10,7 @@ package analizadorlex;
  *
  * @author Dany
  */
-public enum Tokens {
+public enum Token {
     VARIABLE, INT, SUMA, RESTA, DIV, MULT, ASSIGN, ERROR,FINL,EXPO,PRNUEVO
     ,ASIGN_VARIABLE,ECUACION
 }

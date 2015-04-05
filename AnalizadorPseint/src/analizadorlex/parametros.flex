@@ -1,16 +1,15 @@
 package analizadorlex;
-import static analizadorlex.Tokens.*;
+import static analizadorlex.Token.*;
 %%
 %class Lexer
 %type Token
-VAR = [A-Za-z]
+L = [a|b|x]
 D = [0-9]
 WHITE=[ \t\r\n]
 %{
 public String lexeme;
 %}
 %%
-"Definir" {return DEFINIR;}
 {WHITE} {/*Ignore*/}
 "//".* {/*Ignore*/}
 ":=" {return ASSIGN;}

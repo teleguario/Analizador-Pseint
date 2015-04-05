@@ -7,15 +7,9 @@
 package analizadorlex;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Reader;
-import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -191,7 +185,7 @@ public class Formulario extends javax.swing.JFrame {
         Lexer lexer = new Lexer (reader);
         String resultado="";
         while (true){
-            Tokens token =lexer.yylex();
+            Token token =lexer.yylex();
             if (token == null){
                 resultado = resultado+"--FIN DE ANALISIS--";    
                 jTextArea2.setText(resultado);
