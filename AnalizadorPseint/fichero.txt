@@ -1,7 +1,9 @@
-nuevo;
-b;
-a;
-x;
-2*b^2+b^3:=0;
+ESCRIBIR  'el resultado de la sumas de: ',a,' y ',b,' es: ',c
+Escribir 'escriba el primer numero'
+	Leer  a
+	Escribir 'escriba el segundo numero'
+	LEER b
 
-
+a   <-     b 
+a:=b
+z   =  a a b v
