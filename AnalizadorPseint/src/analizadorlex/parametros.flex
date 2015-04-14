@@ -2,26 +2,31 @@ package analizadorlex;
 import static analizadorlex.Token.*;
 %%
 %class Lexer
+%line
+%column 
 %type Token
-L = [a|b|x]
+L = [a-zA-Z:]
 D = [0-9]
-WHITE=[ \t\r\n]
+WHITE=[ \t\r]
+COMA = [,]
+SALTO = [\n]
+SIMASIG = [=|<-|:=]
 %{
 public String lexeme;
 %}
 %%
 {WHITE} {/*Ignore*/}
 "//".* {/*Ignore*/}
-":=" {return ASSIGN;}
+{SALTO} {/*Ignore*/}
 "+" {return SUMA;}
 "*" {return MULT;}
-"-" {return RESTA;}
 "/" {return DIV;}
 ";" {return FINL;}
 "^" {return EXPO;}
-{L}({L}" "*|{D})*" "* {lexeme=yytext(); return VARIABLE;}
-("nuevo"" "*|"NUEVO"" "*)";"" "* {lexeme=yytext(); return PRNUEVO;}
-({L}|{D})+" "*":="" "*"-"?{D}+" "*";" {lexeme=yytext(); return ASIGN_VARIABLE;}
-(("-"?{D}+" "*|"-"?{L}" "*)+" "*("^"|"*"|"/"|"-"|"+")+" "*("-"?{D}+" "*|"-"?{L}+" "*)+(("^"|"*"|"/"|"-"|"+")+" "*("-"?{D}+" "*|"-"?{L}+" "*)+)*)+" "*(":="" "*"-"?" "*{D}+" "*";"" "*){1} {lexeme=yytext(); return ECUACION;}
- "-"?{D}+" "* {lexeme=yytext(); return INT;}
+"DEFINIR" {return DEFINIR;}
+{D}{D}* {lexeme=yytext(); return IDENTIFICADOR;}
+{D}{D}* {lexeme=yytext(); return ENTERO;}
+("ESCRIBIR"|"Escribir"){WHITE}+({WHITE}*("'")({WHITE}*{L}*)*("'")({WHITE}*{COMA}?{L}?)*)+ {lexeme=yytext(); return ESCRIBIR;}
+("LEER"|"Leer"){WHITE}+(({WHITE}*{L}*)?({WHITE}*{COMA}?{L}?)*)+ {lexeme=yytext(); return LEER;}
+{L}{L}*{WHITE}*("<-"|{SIMASIG}){WHITE}*{L}{L}*|("'")({WHITE}*{L}*)*("'") {lexeme=yytext(); return ASIGNACION;}
 . {return ERROR;}

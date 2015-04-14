@@ -77,23 +77,24 @@ public class Formulario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(206, 206, 206)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(342, 342, 342)
+                .addComponent(jLabel3)
+                .addContainerGap(389, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +172,6 @@ public class Formulario extends javax.swing.JFrame {
     
     
         public void probarLexerFile() throws IOException{
-        int contIDs=0;
         /*File fichero = new File ("fichero.txt");
         PrintWriter writer;
         try {
@@ -195,27 +195,14 @@ public class Formulario extends javax.swing.JFrame {
                 case SUMA:
                     resultado=resultado+ "<MAS>\n";
                     break;
-                case RESTA:
-                    resultado=resultado+ "<MENOS>\n";
-                    break;
                 case MULT:
                     resultado=resultado+ "<MULTIPLICACION>\n";
                     break;
                 case DIV:
                     resultado=resultado+ "<DIVISION>\n";
                     break;
-                case ASSIGN:
-                    resultado=resultado+ "<ASIGNACION>\n";
-                    break;
                 case ERROR:
                     resultado=resultado+ "<ERROR, SIMBOLO NO RECONOCIDO>\n";
-                    break;
-                case VARIABLE:
-                    contIDs++;
-                    resultado=resultado+ "<VARIABLE" + contIDs + ">\n";
-                    break;
-                case INT:
-                    resultado=resultado+ "<valor entero: " + lexer.lexeme + "> \n";
                     break;
                 case FINL:
                     resultado=resultado+ "<FL>\n";
@@ -223,14 +210,23 @@ public class Formulario extends javax.swing.JFrame {
                 case EXPO:
                     resultado=resultado+ "<EXPONENCIAL>\n";
                     break;
-                case PRNUEVO:
-                    resultado=resultado+ "<NUEVO INICIO>\n";
+                case LEER:
+                    resultado=resultado+ "<COMANDO LEER>\n";
                     break;
-                case ASIGN_VARIABLE:
-                    resultado=resultado+ "<ASIGNACION DE VALOR A VARIABLE>\n";
+                case ESCRIBIR:
+                    resultado=resultado+ "<COMANDO ESCRIBIR>\n";
                     break;
-                case ECUACION:
-                    resultado=resultado+ "<SE ESCRIBIO UNA ECUACION>\n";
+                case DEFINIR:
+                    resultado=resultado+ "<COMANDO DEFINIR>\n";
+                    break;
+                case IDENTIFICADOR:
+                    resultado=resultado+ "<IDENTIFICADOR "+ lexer.lexeme +" >\n";
+                    break;
+                case ENTERO:
+                    resultado=resultado+ "<ENTERO "+ lexer.lexeme +" >\n";
+                    break;
+                case ASIGNACION:
+                    resultado=resultado+ "<COMANDO ASIGNACION>\n";
                     break;
                 default:
                     resultado=resultado+ "<"+ lexer.lexeme + "> \n";
